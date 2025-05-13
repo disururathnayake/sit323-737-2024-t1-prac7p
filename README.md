@@ -4,60 +4,31 @@
 
 3. Build and Push Docker Image
 
-        docker build -t my-node-app .
-        docker tag my-node-app [your_username]/my-node-app       
-        docker push [your_username]/my-node-app
+        docker build -t disuru0120/calculator-app:v3 . 
+        docker push disuru0120/calculator-app:v3 
       
 
-4. Set Up Kubernetes Dashboard
-
-        kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
-
-5. Create Admin User for Dashboard
-
-        kubectl apply -f deployment/dashboard-adminuser.yaml
-        kubectl apply -f deployment/cluster_role_binding.yaml
-
-6. Start proxy to access dashboard
-
-        kubectl proxy
-
-7. Login token command
-
-        kubectl -n kubernetes-dashboard create token admin-user
-
-8. Apply all yaml files in Deployment
+4. Apply all yaml files in Deployment
 
         kubectl apply -f deployment/
 
-9. Verify pods
+5. Port Forwarding
 
-        kubectl get pods
+        kubectl port-forward svc/calculator-service 3040:80
 
-10. Test Application
+6. Test Application
 
         http://localhost:30036/add?num1=10&num2=5
 
-Task sit737-2025-prac6c
+7. API End Points
+   
+GET - /add - Add two numbers
+GET - /subtract - Subtract two numbers
+GET - /multiply - Multiply two numbers
+GET - /divide - Divide two numbers
+GET - /history - Show all stored operations
+PUT - /calculation/:id - Update result
+DELETE - /calculation/:id - Delete a calculation entry
 
-11. Port Forwarding
 
-        kubectl port-forward service/calculator-service 8088:80
-
-12. Access the Application
-
-        http://localhost:8888/add?num1=10&num2=5
-
-13. Building new docker image and version tag
-
-        docker build -t [your-dockerhub-username]/calculator-app:v2 .
-
-        docker push [your-dockerhub-username]/calculator-app:v2
-
-14. Update deployment.yaml
-
-        image: [your-dockerhub-username]/calculator-app:v2
-
-15. Apply all deployment files in Deployment
-
-        kubectl apply -f deployment/deployment.yaml
+ 
