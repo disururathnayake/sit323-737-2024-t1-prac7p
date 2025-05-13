@@ -1,0 +1,15 @@
+{
+    "name": "docker_web_app",
+    "version": "1.0.0",
+    "description": "app.js on Docker",
+    "author": "Disuru Rathnayake <disuru.office@gmail.com>",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "express": "",
+        "mongoose": "^8.14.2",
+        "winston": "^3.17.0"
+    }
+}

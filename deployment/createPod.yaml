@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: calculator-pod
+  labels:
+    app: calculator
+spec:
+  containers:
+  - name: calculator-container
+    image: disuru0120/my-node-app
+    ports:
+    - containerPort: 3040
